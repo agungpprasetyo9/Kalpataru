@@ -3,4 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main_blue">#FF0063A4</color>
+    <color name="line_grey">#FFCACACA</color>
+    <color name="green">#FF079450</color>
+    <color name="orange">#FFFF7E00</color>
+    <color name="red">#FFFF0000</color>
+
 </resources>

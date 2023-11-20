@@ -3,6 +3,7 @@
     <style name="Base.Theme.Kalpataru" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fontFamily">@font/interregular</item>
     </style>
 
     <style name="Theme.Kalpataru" parent="Base.Theme.Kalpataru" />
