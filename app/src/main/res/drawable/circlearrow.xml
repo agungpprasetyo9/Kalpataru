@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Oval shape with rounded corners -->
+    <item>
+        <shape android:shape="oval">
+            <corners
+                android:bottomLeftRadius="23dp"
+                android:bottomRightRadius="23dp" />
+            <solid android:color="@color/main_blue" />
+        </shape>
+    </item>
+
+    <!-- Add another drawable on top of the oval shape -->
+    <item android:drawable="@drawable/arrowfor"
+        android:gravity="center" />
+
+</layer-list>

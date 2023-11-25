@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Dashboard">
 
+
     <View
         android:id="@+id/top_view"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:background="@drawable/bg_dash"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.527" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -122,7 +122,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/AQInum"
+                    android:id="@+id/AQI"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/interextrabold"
@@ -155,7 +155,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -184,7 +184,7 @@
 
                     <TextView
                         android:id="@+id/suhu"
-                        android:layout_width="wrap_content"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:text="27°C"
                         android:textColor="@color/white"
@@ -202,7 +202,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
@@ -230,9 +230,9 @@
 
                     <TextView
                         android:id="@+id/udara"
-                        android:layout_width="wrap_content"
+                        android:layout_width="91dp"
                         android:layout_height="wrap_content"
-                        android:text="2.732"
+                        android:text="2.7 kph"
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -248,7 +248,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="15dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
@@ -267,16 +267,16 @@
 
                     <TextView
                         android:id="@+id/ketkelembapan"
-                        android:layout_width="match_parent"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/intemedium"
-                        android:text="Suhu"
+                        android:text="Kelembapan"
                         android:textColor="@color/white"
                         android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/kelembapan"
-                        android:layout_width="wrap_content"
+                        android:layout_width="63dp"
                         android:layout_height="wrap_content"
                         android:text="70%"
                         android:textColor="@color/white"
@@ -293,14 +293,20 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/detailAQI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="20dp"
-        android:text="Button"
+        android:backgroundTint="#FFFFFF"
+        android:text="Lihat Selengkapnya"
+        android:textSize="12sp"
+        android:fontFamily="@font/intersemibold"
+        android:drawableRight="@drawable/circlearrow"
+        android:textColor="@color/main_blue"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

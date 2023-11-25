@@ -13,7 +13,7 @@ class Login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.login)
 
         loginBtn = findViewById(R.id.Login_btn)
         usernameEditText = findViewById(R.id.Username_edit_text)
