@@ -1,4 +1,4 @@
-package com.example.kalpataru
+package com.example.kalpataru.model
 
 data class Current(
     val air_quality: AirQuality,

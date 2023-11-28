@@ -1,4 +1,4 @@
-package com.example.kalpataru
+package com.example.kalpataru.model
 
 
 import retrofit2.http.GET

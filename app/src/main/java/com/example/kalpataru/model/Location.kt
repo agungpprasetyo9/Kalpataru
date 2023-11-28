@@ -1,4 +1,4 @@
-package com.example.kalpataru
+package com.example.kalpataru.model
 
 data class Location(
     val country: String,

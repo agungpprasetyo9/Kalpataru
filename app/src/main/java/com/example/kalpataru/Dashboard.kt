@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.widget.TextView
 
 import androidx.lifecycle.lifecycleScope
+import com.example.kalpataru.model.AirQuality
+import com.example.kalpataru.model.WeatherApi
+import com.example.kalpataru.model.WeatherService
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
