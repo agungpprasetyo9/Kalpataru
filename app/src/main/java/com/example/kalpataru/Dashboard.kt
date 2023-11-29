@@ -84,8 +84,9 @@ class Dashboard : AppCompatActivity() {
         timeView.text = "${current.last_updated}"
         udaraView.text = "${current.wind_kph} kph"
 
-        val pm25Value = 300.0
+//        val pm25Value = 300.0
 //        val pm25Value = 160.0
+        val pm25Value = airQuality.pm25
 
         val aqi = calculateAQI(pm25Value)
 
