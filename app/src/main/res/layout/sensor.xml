@@ -113,4 +113,12 @@
 
     </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_menu"
+        tools:layout_editor_absoluteX="1dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

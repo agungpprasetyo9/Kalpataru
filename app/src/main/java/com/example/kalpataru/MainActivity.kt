@@ -16,22 +16,22 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item: MenuItem->
             when (item.itemId) {
                 R.id.bottom_home -> return@setOnItemSelectedListener true
-                R.id.bottom_search -> {
-                    startActivity(Intent(applicationContext, SearchActivity::class.java))
+                R.id.bottom_berita -> {
+                    startActivity(Intent(applicationContext, Sensor::class.java))
                     overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
                     finish()
                     return@setOnItemSelectedListener true
                 }
 
-                R.id.bottom_settings -> {
-                    startActivity(Intent(applicationContext, SettingsActivity::class.java))
+                R.id.bottom_grafik -> {
+                    startActivity(Intent(applicationContext, Sensor::class.java))
                     overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
                     finish()
                     return@setOnItemSelectedListener true
                 }
 
-                R.id.bottom_profile -> {
-                    startActivity(Intent(applicationContext, ProfileActivity::class.java))
+                R.id.bottom_sensor -> {
+                    startActivity(Intent(applicationContext, Sensor::class.java))
                     overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
                     finish()
                     return@setOnItemSelectedListener true

@@ -59,6 +59,14 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
 
-    //Firebase
+    //Nav action
+    val nav_version = "2.7.5"
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    //api
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
+    implementation ("com.android.volley:volley:1.2.1")
+    implementation ("com.github.bumptech.glide:glide:4.14.2")
 
 }

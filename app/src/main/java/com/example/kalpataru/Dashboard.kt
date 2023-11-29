@@ -1,14 +1,21 @@
 package com.example.kalpataru
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.TextView
 
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.kalpataru.model.WeatherApi
 import com.example.kalpataru.model.WeatherService
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -26,9 +33,39 @@ class Dashboard : AppCompatActivity() {
     private lateinit var linearLayoutView: LinearLayout
     private lateinit var runTextView: TextView
 
+    //nav control
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNavigationView.selectedItemId = R.id.bottom_home
+        bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.bottom_home -> return@setOnItemSelectedListener true
+                R.id.bottom_berita -> {
+                    startActivity(Intent(applicationContext, Sensor::class.java))
+                    overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.bottom_grafik -> {
+                    startActivity(Intent(applicationContext, Sensor::class.java))
+                    overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.bottom_sensor -> {
+                    startActivity(Intent(applicationContext, Sensor::class.java))
+                    overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+            }
+            false
+        }
+
 
         locationView = findViewById(R.id.lokasi)
         suhuView = findViewById(R.id.suhu)
@@ -85,8 +122,8 @@ class Dashboard : AppCompatActivity() {
         udaraView.text = "${current.wind_kph} kph"
 
 //        val pm25Value = 300.0
-//        val pm25Value = 160.0
-        val pm25Value = airQuality.pm25
+        val pm25Value = 10.0
+//        val pm25Value = airQuality.pm25
 
         val aqi = calculateAQI(pm25Value)
 

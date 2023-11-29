@@ -8,19 +8,19 @@
         android:title="Home" />
 
     <item
-        android:id="@+id/bottom_search"
+        android:id="@+id/bottom_berita"
         android:icon="@drawable/publication"
-        android:title="Search" />
+        android:title="Berita" />
 
     <item
-        android:id="@+id/bottom_settings"
+        android:id="@+id/bottom_grafik"
         android:icon="@drawable/statst"
-        android:title="Settings" />
+        android:title="Grafik" />
 
     <item
-        android:id="@+id/bottom_profile"
+        android:id="@+id/bottom_sensor"
         android:icon="@drawable/sensor"
-        android:title="Profile" />
+        android:title="Sensor" />
 
 
 </menu>
