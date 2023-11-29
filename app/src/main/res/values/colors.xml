@@ -9,5 +9,11 @@
     <color name="green">#FF079450</color>
     <color name="orange">#FFFF7E00</color>
     <color name="red">#FFFF0000</color>
+    <color name="yellow">#FFF7D460</color>
+    <color name="one">#FFF7D460</color>
+    <color name="two">#FFFF7E00</color>
+    <color name="three">#FFFF0000</color>
+    <color name="four">#FFA37DB8</color>
+    <color name="five">#FFA07684</color>
 
 </resources>

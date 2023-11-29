@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">kalpataru</string>
+    <string name="long_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur atque culpa distinctio doloremque facilis fugiat nemo, optio praesentium repellat sunt. Aliquid et illum magni neque nesciunt officiis perferendis quis sit.</string>
+
+
+    <string name="zero">Kualitas udara saat ini sangat baik dengan nilai AQI antara 0 hingga 50.</string>
+    <string name="one">Kualitas udara saat ini sedang dengan nilai AQI antara 51 hingga 100.</string>
+    <string name="two">Kualitas udara saat ini tidak sehat untuk kelompok sensitif, dengan nilai AQI antara 101 hingga 150. Orang dalam kelompok sensitif disarankan untuk membatasi aktivitas di luar ruangan.</string>
+    <string name="three">Kualitas udara saat ini tidak sehat dengan nilai AQI antara 151 hingga 200. Semua orang disarankan untuk mengurangi aktivitas di luar ruangan, terutama jika Anda mengalami gejala pernapasan.</string>
+    <string name="four">Kualitas udara saat ini sangat tidak sehat dengan nilai AQI antara 201 hingga 300. Semua orang disarankan untuk menghindari aktivitas di luar ruangan dan menggunakan masker pelindung.</string>
+    <string name="five">
+        Kualitas udara saat ini berbahaya dengan nilai AQI lebih dari 300. Hindari kegiatan di luar ruangan, gunakan masker, dan hindari keluar rumah jika Anda termasuk dalam kelompok sensitif.
+    </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
