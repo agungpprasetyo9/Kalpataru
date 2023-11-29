@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@color/white"
             android:padding="20dp">
 
             <TextView
@@ -42,7 +43,7 @@
 
             <EditText
                 android:id="@+id/signup_email"
-                android:layout_width="310dp"
+                android:layout_width="280dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="70dp"
                 android:background="@drawable/lavender_border"
@@ -50,11 +51,11 @@
                 android:drawablePadding="8dp"
                 android:hint="Email"
                 android:padding="8dp"
-                android:textColor="@color/grey" />
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/signup_password"
-                android:layout_width="310dp"
+                android:layout_width="280dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/lavender_border"
@@ -63,11 +64,11 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="@color/grey" />
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/signup_confirm"
-                android:layout_width="310dp"
+                android:layout_width="280dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/lavender_border"
@@ -76,27 +77,44 @@
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="@color/grey" />
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/signup_button"
-                android:layout_width="310dp"
+                android:layout_width="280dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="30dp"
                 android:text="Sign Up"
                 android:textSize="18sp"
                 app:cornerRadius="30dp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/loginRedirectText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
-                android:text="Already an user? Login"
-                android:textColor="@color/lavender"
-                android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/loginText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="8dp"
+                        android:padding="8dp"
+                        android:text="Already an user?"
+                        android:textColor="@color/lavender"
+                        android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/loginRedirectText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_toRightOf="@id/loginText"
+                            android:padding="8dp"
+                            android:text="Login"
+                            android:textColor="@color/lavender"
+                            android:textSize="18sp" />
+                </RelativeLayout>
 
         </LinearLayout>
 

@@ -19,6 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@color/white"
                 android:padding="20dp">
 
                 <TextView
@@ -41,7 +42,7 @@
                     android:textColor="@color/lavender"/>
 
                 <EditText
-                    android:layout_width="310dp"
+                    android:layout_width="280dp"
                     android:layout_height="60dp"
                     android:id="@+id/login_email"
                     android:layout_marginTop="70dp"
@@ -50,23 +51,23 @@
                     android:hint="Email"
                     android:drawableLeft="@drawable/email"
                     android:drawablePadding="8dp"
-                    android:textColor="@color/grey"/>
+                    android:textColor="@color/black"/>
 
                 <EditText
-                    android:layout_width="310dp"
+                    android:layout_width="280dp"
                     android:layout_height="60dp"
                     android:id="@+id/login_password"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/lavender_border"
                     android:padding="8dp"
+                    android:inputType="textPassword"
                     android:hint="Password"
                     android:drawableLeft="@drawable/lock"
                     android:drawablePadding="8dp"
-                    android:textColor="@color/grey"/>
-
+                    android:textColor="@color/black"/>
 
                 <Button
-                    android:layout_width="310dp"
+                    android:layout_width="280dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="30dp"
                     android:text="Login"
@@ -85,16 +86,33 @@
                     android:textColor="@color/lavender"
                     android:textSize="16sp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/signupRedirectText"
-                    android:text="Not yet registered? Signup"
-                    android:layout_gravity="center"
-                    android:padding="8dp"
-                    android:layout_marginTop="14dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/lavender"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/signupText"
+                        android:text="Not yet registered?"
+                        android:layout_gravity="center"
+                        android:padding="8dp"
+                        android:layout_marginTop="14dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/lavender"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/signupRedirectText"
+                        android:text="Signup"
+                        android:layout_gravity="center"
+                        android:layout_toRightOf="@id/signupText"
+                        android:padding="8dp"
+                        android:layout_marginTop="14dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/lavender"/>
+                </RelativeLayout>
 
             </LinearLayout>
     </androidx.cardview.widget.CardView>
