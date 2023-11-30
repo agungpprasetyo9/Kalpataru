@@ -9,8 +9,8 @@
 
     <View
         android:id="@+id/top_view"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="415dp"
+        android:layout_height="389dp"
         android:background="@drawable/bg_dash"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -349,24 +349,35 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/intersemibold"
         android:text="Akses Cepat"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_view" />
 
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="0dp"
+        android:layout_height="65dp"
+        android:background="@color/bluehead"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="20dp"/>
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="@color/main_blue"
         android:text="Prediksi Kualitas Udara"
         android:textColor="@color/white"
@@ -389,4 +400,44 @@
         app:menu="@menu/bottom_menu"
         tools:layout_editor_absoluteX="0dp" />
 
+    <TextView
+        android:id="@+id/tvAppName"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Artikel"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="25dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="26sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclervieww"
+        android:layout_width="382dp"
+        android:layout_height="189dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="432dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loading"
+        style="@style/SpinKitView.ThreeBounce"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:SpinKit_Color="#546E7A"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+    <!-- Header Background -->

@@ -1,8 +1,11 @@
-package com.example.kalpataru
+package com.example.kalpataru.View
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -10,18 +13,26 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kalpataru.View.MainViewModel
+import androidx.recyclerview.widget.RecyclerView
+import com.example.kalpataru.R
 import com.example.kalpataru.databinding.ActivityDashboardBinding
 import com.example.kalpataru.model.MyResponse
 import com.example.kalpataru.model.WeatherApi
 import com.example.kalpataru.model.WeatherService
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class Dashboard : AppCompatActivity() {
+    @Inject
+    lateinit var newsAdapter: NewsAdapter
+    private val viewModel: MainViewModel by viewModels()
+
     private lateinit var locationView: TextView
     private lateinit var suhuView: TextView
     private lateinit var AQIView: TextView
@@ -32,10 +43,79 @@ class Dashboard : AppCompatActivity() {
     private lateinit var kualitasUdaraView: TextView
     private lateinit var linearLayoutView: LinearLayout
     private lateinit var runTextView: TextView
+    private lateinit var binding: ActivityDashboardBinding
 
+    private lateinit var recyclerVieww: RecyclerView // Menambahkan variabel RecyclerView
+
+
+
+    //nav control
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setupViews()
+        observeNewsData()
+        viewModel.getAllNotes()
         setContentView(R.layout.activity_dashboard)
+        newsAdapter = NewsAdapter(this)
+
+        // Inisialisasi RecyclerView
+        recyclerVieww = findViewById<RecyclerView>(R.id.recyclervieww)
+        recyclerVieww.apply {
+            layoutManager = LinearLayoutManager(this@Dashboard, LinearLayoutManager.HORIZONTAL, false)
+            adapter = newsAdapter // Gunakan AdapterNews di RecyclerView
+        }
+
+        // Lakukan hal lain yang Anda butuhkan untuk aktivitas ini
+        // ...
+
+    // ...
+
+        //
+        val logoutButton: ImageButton = findViewById(R.id.logoutButton)
+
+        logoutButton.setOnClickListener {
+            // Call the logout function
+            logout()
+        }
+        //nav control
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNavigationView.selectedItemId = R.id.bottom_home
+        bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.bottom_home -> return@setOnItemSelectedListener true
+                R.id.bottom_berita -> {
+                    val intent = Intent(applicationContext, ArtikelPage::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.bottom_grafik -> {
+                    val intent = Intent(applicationContext, Grafik::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.bottom_sensor -> {
+                    val intent = Intent(applicationContext, Sensor::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+            }
+            false
+        }
+
+//
+
 
         locationView = findViewById(R.id.lokasi)
         suhuView = findViewById(R.id.suhu)
@@ -49,12 +129,7 @@ class Dashboard : AppCompatActivity() {
         runTextView = findViewById(R.id.runtext)
 
 
-        binding = ActivityDashboardBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        setupViews()
-        observeNewsData()
-        viewModel.getAllNotes()
 
         runTextView.isSelected = true
 
@@ -97,8 +172,9 @@ class Dashboard : AppCompatActivity() {
         timeView.text = "${current.last_updated}"
         udaraView.text = "${current.wind_kph} kph"
 
-        val pm25Value = 300.0
-//        val pm25Value = 160.0
+//        val pm25Value = 300.0
+        val pm25Value = 10.0
+//        val pm25Value = airQuality.pm25
 
         val aqi = calculateAQI(pm25Value)
 
@@ -186,6 +262,18 @@ class Dashboard : AppCompatActivity() {
             }
         }
     }
+    private fun logout() {
+        val auth = FirebaseAuth.getInstance()
+
+        // Sign out the user
+        auth.signOut()
+
+        // Navigate to ActivityLogin
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        finish()
+    }
 
 //    fun calculateAQI(pm25: Double): String {
 //        if (pm25 < 0 || pm25 > 500) {
@@ -214,13 +302,6 @@ class Dashboard : AppCompatActivity() {
     }
 
 
-    private lateinit var binding: ActivityDashboardBinding
-
-    private val viewModel: MainViewModel by viewModels()
-
-    @Inject
-    lateinit var newsAdapter: AdapterNews
-
 
 
 
@@ -244,8 +325,8 @@ class Dashboard : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        binding.recyclerview.apply {
-            layoutManager = LinearLayoutManager(this@Dashboard, LinearLayoutManager.VERTICAL, false)
+        binding.recyclervieww.apply {
+            layoutManager = LinearLayoutManager(this@Dashboard, LinearLayoutManager.HORIZONTAL, false)
             adapter = newsAdapter
         }
     }
