@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 
@@ -13,6 +14,7 @@ import com.example.kalpataru.R
 import com.example.kalpataru.model.WeatherApi
 import com.example.kalpataru.model.WeatherService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,7 +37,14 @@ class Dashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+        //
+        val logoutButton: ImageButton = findViewById(R.id.logoutButton)
 
+        logoutButton.setOnClickListener {
+            // Call the logout function
+            logout()
+        }
+        //nav control
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNavigationView.selectedItemId = R.id.bottom_home
         bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
@@ -214,6 +223,18 @@ class Dashboard : AppCompatActivity() {
                 runTextView.text = getString(R.string.five)
             }
         }
+    }
+    private fun logout() {
+        val auth = FirebaseAuth.getInstance()
+
+        // Sign out the user
+        auth.signOut()
+
+        // Navigate to ActivityLogin
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        finish()
     }
 
 //    fun calculateAQI(pm25: Double): String {

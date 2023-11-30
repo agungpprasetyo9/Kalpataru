@@ -26,7 +26,7 @@ class Sensor : AppCompatActivity() {
         bottomNavigationView.selectedItemId = R.id.bottom_sensor
         bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
-                R.id.bottom_grafik -> return@setOnItemSelectedListener true
+                R.id.bottom_sensor -> return@setOnItemSelectedListener true
                 R.id.bottom_home -> {
                     val intent = Intent(applicationContext, Dashboard::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
@@ -43,8 +43,8 @@ class Sensor : AppCompatActivity() {
                     return@setOnItemSelectedListener true
                 }
 
-                R.id.bottom_sensor -> {
-                    val intent = Intent(applicationContext, Sensor::class.java)
+                R.id.bottom_grafik -> {
+                    val intent = Intent(applicationContext, Grafik::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
                     startActivity(intent)
                     finish()

@@ -97,7 +97,7 @@ class Grafik : AppCompatActivity() {
                     latestTemperature.text = "Update terakhir ${formatDate(lastUpdate)}"
                     kelembabanUdara.text = "$humidity %"
                     indexUdara.text = "Index udara $pressureIn"
-                    kualitasUdaraInNumber.text = "$windDegree"
+
 
                     pm25.text = getPm25.toString()
                     co.text = getCo.toString()
@@ -106,7 +106,7 @@ class Grafik : AppCompatActivity() {
                     so2.text = getSo2.toString()
                     pm10.text = getPm10.toString()
                     hc.text = humidity.toString()
-
+                    kualitasUdaraInNumber.text = calculateAQI(getPm25)
                     // Find the maximum value
                     val maxVal = maxOf(getPm25, getCo, getNo2, getO3, getSo2, getPm10, humidity.toDouble())
 
@@ -121,6 +121,8 @@ class Grafik : AppCompatActivity() {
                     val so2Percent = getSo2 * scalingFactor
                     val pm10Percent = getPm10 * scalingFactor
                     val humidityPercent = humidity.toDouble() * scalingFactor
+
+
 
                     // Define your percentage values in a map
                     val percentageMap = mapOf(
@@ -152,6 +154,41 @@ class Grafik : AppCompatActivity() {
 
         // Add the request to the request queue
         requestQueue.add(jsonObjectRequest)
+    }
+    fun calculateAQI(pm25: Double): String {
+
+        if (pm25 < 0 || pm25 > 500) {
+            return "Invalid input. PM2.5 concentration should be between 0 and 500."
+        }
+
+        val breakpoints = listOf(0.0, 12.0, 35.4, 55.4, 150.4, 250.4, 350.4, 500.4)
+        val concentrations = listOf(0, 50, 100, 150, 200, 300, 400, 500)
+        val index = calculateIndex(pm25, breakpoints, concentrations)
+
+        return "$index"
+//
+//        return when {
+//            pm25 in 0.0..12.0 -> 0
+//            pm25 in 12.1..35.4 -> 1
+//            pm25 in 35.5..55.4 -> 2
+//            pm25 in 55.5..150.4 -> 3
+//            pm25 in 150.5..250.4 -> 4
+//            else -> 5
+//        }
+    }
+
+    fun calculateIndex(value: Double, breakpoints: List<Double>, concentrations: List<Int>): Int {
+        for (i in 0 until breakpoints.size - 1) {
+            if (value >= breakpoints[i] && value <= breakpoints[i + 1]) {
+                val bpLow = breakpoints[i]
+                val bpHigh = breakpoints[i + 1]
+                val concLow = concentrations[i]
+                val concHigh = concentrations[i + 1]
+
+                return ((concHigh - concLow) / (bpHigh - bpLow) * (value - bpLow) + concLow).toInt()
+            }
+        }
+        throw IllegalArgumentException("Value not within valid range.")
     }
 
     private fun formatDate(inputDate: String): String {
