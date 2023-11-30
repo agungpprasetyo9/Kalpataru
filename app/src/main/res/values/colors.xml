@@ -15,4 +15,12 @@
     <color name="three">#FFFF0000</color>
     <color name="four">#FFA37DB8</color>
     <color name="five">#FFA07684</color>
+
+
+    <color name="wildSand">#F5F5F5</color>
+    <color name="tundora">#4A4A4A</color>
+    <color name="bluehead">#0063A4</color>
+    <color name="purple">#8758FF</color>
+
+
 </resources>

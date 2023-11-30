@@ -2,25 +2,37 @@ package com.example.kalpataru.View
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kalpataru.R
+import com.example.kalpataru.databinding.ActivityDashboardBinding
+import com.example.kalpataru.model.MyResponse
 import com.example.kalpataru.model.WeatherApi
 import com.example.kalpataru.model.WeatherService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class Dashboard : AppCompatActivity() {
+    @Inject
+    lateinit var newsAdapter: NewsAdapter
+    private val viewModel: MainViewModel by viewModels()
+
     private lateinit var locationView: TextView
     private lateinit var suhuView: TextView
     private lateinit var AQIView: TextView
@@ -31,11 +43,36 @@ class Dashboard : AppCompatActivity() {
     private lateinit var kualitasUdaraView: TextView
     private lateinit var linearLayoutView: LinearLayout
     private lateinit var runTextView: TextView
+    private lateinit var binding: ActivityDashboardBinding
+
+    private lateinit var recyclerVieww: RecyclerView // Menambahkan variabel RecyclerView
+
+
 
     //nav control
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setupViews()
+        observeNewsData()
+        viewModel.getAllNotes()
         setContentView(R.layout.activity_dashboard)
+        newsAdapter = NewsAdapter(this)
+
+        // Inisialisasi RecyclerView
+        recyclerVieww = findViewById<RecyclerView>(R.id.recyclervieww)
+        recyclerVieww.apply {
+            layoutManager = LinearLayoutManager(this@Dashboard, LinearLayoutManager.HORIZONTAL, false)
+            adapter = newsAdapter // Gunakan AdapterNews di RecyclerView
+        }
+
+        // Lakukan hal lain yang Anda butuhkan untuk aktivitas ini
+        // ...
+
+    // ...
 
         //
         val logoutButton: ImageButton = findViewById(R.id.logoutButton)
@@ -90,6 +127,7 @@ class Dashboard : AppCompatActivity() {
         kualitasUdaraView = findViewById(R.id.kualitasudara)
         linearLayoutView =  findViewById(R.id.subinfobg)
         runTextView = findViewById(R.id.runtext)
+
 
 
 
@@ -261,6 +299,36 @@ class Dashboard : AppCompatActivity() {
             }
         }
         throw IllegalArgumentException("Value not within valid range.")
+    }
+
+
+
+
+
+
+    private fun observeNewsData() {
+        viewModel.newsData.observe(this@Dashboard) { response ->
+            when (response.status) {
+                MyResponse.Status.LOADING -> {
+                    binding.loading.visibility = View.VISIBLE
+                }
+                MyResponse.Status.SUCCESS -> {
+                    binding.loading.visibility = View.GONE
+                    response?.data?.articles?.let { newsAdapter.submitData(it) }
+                }
+                MyResponse.Status.ERROR -> {
+                    binding.loading.visibility = View.GONE
+                    Toast.makeText(this@Dashboard, response.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun setupViews() {
+        binding.recyclervieww.apply {
+            layoutManager = LinearLayoutManager(this@Dashboard, LinearLayoutManager.HORIZONTAL, false)
+            adapter = newsAdapter
+        }
     }
 
 
