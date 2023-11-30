@@ -23,7 +23,7 @@ class ProfileActivity : AppCompatActivity() {
                 }
 
                 R.id.bottom_search -> {
-                    startActivity(Intent(applicationContext, SearchActivity::class.java))
+                    startActivity(Intent(applicationContext, ArtikelPage::class.java))
                     overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
                     finish()
                     return@setOnItemSelectedListener true
