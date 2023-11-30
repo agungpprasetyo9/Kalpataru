@@ -9,20 +9,20 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
-import com.project.kalpataru.databinding.ActivityMainBinding
+import com.project.kalpataru.databinding.GrafikBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 class grafik : AppCompatActivity() {
 
-    private var _binding : ActivityMainBinding? = null
+    private var _binding : GrafikBinding? = null
     private val binding get() = _binding!!
     private val apiKey = "2dbf726a758b40e2a4d101106202810"
     private val apiUrl = "https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=-7.8011945,110.364917&days=8&aqi=yes&alerts"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityMainBinding.inflate(layoutInflater)
+        _binding = GrafikBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         Glide.with(this)
