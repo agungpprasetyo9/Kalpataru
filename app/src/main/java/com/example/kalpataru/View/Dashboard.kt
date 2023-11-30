@@ -1,4 +1,4 @@
-package com.example.kalpataru
+package com.example.kalpataru.View
 
 import android.content.Intent
 import android.graphics.Color
@@ -9,10 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import com.example.kalpataru.R
 import com.example.kalpataru.model.WeatherApi
 import com.example.kalpataru.model.WeatherService
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,34 +34,41 @@ class Dashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNavigationView.selectedItemId = R.id.bottom_home
         bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.bottom_home -> return@setOnItemSelectedListener true
                 R.id.bottom_berita -> {
-                    startActivity(Intent(applicationContext, Sensor::class.java))
-                    overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
+                    val intent = Intent(applicationContext, ArtikelPage::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
                     finish()
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.bottom_grafik -> {
-                    startActivity(Intent(applicationContext, Sensor::class.java))
-                    overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
+                    val intent = Intent(applicationContext, Grafik::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
                     finish()
                     return@setOnItemSelectedListener true
                 }
 
                 R.id.bottom_sensor -> {
-                    startActivity(Intent(applicationContext, Sensor::class.java))
-                    overridePendingTransition(R.anim.slide_in_kanan, R.anim.slide_out_kiri)
+                    val intent = Intent(applicationContext, Sensor::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                    startActivity(intent)
                     finish()
                     return@setOnItemSelectedListener true
                 }
             }
             false
         }
+
+//
 
 
         locationView = findViewById(R.id.lokasi)

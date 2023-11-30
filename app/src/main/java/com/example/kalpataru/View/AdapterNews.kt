@@ -1,4 +1,4 @@
-package com.example.kalpataru
+package com.example.kalpataru.View
 
 
 import android.content.Context
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.kalpataru.R
 import com.example.kalpataru.databinding.ItemNewsBinding
 import com.example.kalpataru.model.Article
 import dagger.hilt.android.qualifiers.ActivityContext
@@ -69,7 +70,7 @@ class AdapterNews @Inject constructor(@ActivityContext private val context : Con
         return position
     }
 
-    override fun onBindViewHolder(holder : MyViewHolder , position : Int)
+    override fun onBindViewHolder(holder : MyViewHolder, position : Int)
     {
         holder.setData(newsList[position])
     }

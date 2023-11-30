@@ -30,7 +30,7 @@
                 android:id="@+id/newsTitle"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/purple"
+                android:textColor="@color/main_blue"
                 android:maxLines="3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

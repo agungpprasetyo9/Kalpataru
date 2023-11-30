@@ -36,9 +36,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    viewBinding {
+        enable = true
+    }
     buildFeatures{
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -53,29 +57,9 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
     implementation("com.google.android.datatransport:transport-runtime:3.2.0")
 
-    implementation("com.google.firebase:firebase-database:20.3.0")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
-
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    //Retrofit dependency
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
-
-    //Nav action
-    val nav_version = "2.7.5"
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
-
-    //api
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
-    implementation ("com.android.volley:volley:1.2.1")
-    implementation ("com.github.bumptech.glide:glide:4.14.2")
-
 
     //Retrofit dependency
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
@@ -95,7 +79,11 @@ dependencies {
     implementation ("androidx.activity:activity-ktx:1.8.1")
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation ("com.github.ybq:Android-SpinKit:1.4.0")
-    //Firebase
+
+    //API Jagad
+    implementation ("com.android.volley:volley:1.2.1")
+    implementation ("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")
 
 }
 kapt {

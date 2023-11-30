@@ -1,4 +1,4 @@
-package com.example.kalpataru
+package com.example.kalpataru.View
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

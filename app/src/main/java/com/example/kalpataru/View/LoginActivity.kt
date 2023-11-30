@@ -1,4 +1,4 @@
-package com.example.kalpataru
+package com.example.kalpataru.View
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.kalpataru.R
 import com.example.kalpataru.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -32,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
                     if (it.isSuccessful){
-                        val intent = Intent(this, MainActivity::class.java)
+                        val intent = Intent(this, Dashboard::class.java)
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()

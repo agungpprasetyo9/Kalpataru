@@ -1,8 +1,12 @@
-package com.example.kalpataru
+package com.example.kalpataru.View
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
+import com.example.kalpataru.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -17,6 +21,39 @@ class Sensor : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sensor)
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNavigationView.selectedItemId = R.id.bottom_sensor
+        bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.bottom_grafik -> return@setOnItemSelectedListener true
+                R.id.bottom_home -> {
+                    val intent = Intent(applicationContext, Dashboard::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                    startActivity(intent)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.bottom_berita -> {
+                    val intent = Intent(applicationContext, ArtikelPage::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                    startActivity(intent)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.bottom_sensor -> {
+                    val intent = Intent(applicationContext, Sensor::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+                    startActivity(intent)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+            }
+            false
+        }
+
 
         // Initialize UI elements
         tempTextView = findViewById(R.id.tempTextView)
