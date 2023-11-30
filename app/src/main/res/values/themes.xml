@@ -5,6 +5,9 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:fontFamily">@font/interregular</item>
     </style>
-
+    <style name="roundImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
+    </style>
     <style name="Theme.Kalpataru" parent="Base.Theme.Kalpataru" />
 </resources>

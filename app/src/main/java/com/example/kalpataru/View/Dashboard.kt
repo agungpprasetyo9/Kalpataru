@@ -1,23 +1,24 @@
-package com.example.kalpataru.View
+package com.example.kalpataru
 
-import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.ImageButton
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.kalpataru.R
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kalpataru.View.MainViewModel
+import com.example.kalpataru.databinding.ActivityDashboardBinding
+import com.example.kalpataru.model.MyResponse
 import com.example.kalpataru.model.WeatherApi
 import com.example.kalpataru.model.WeatherService
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 
 class Dashboard : AppCompatActivity() {
@@ -32,53 +33,9 @@ class Dashboard : AppCompatActivity() {
     private lateinit var linearLayoutView: LinearLayout
     private lateinit var runTextView: TextView
 
-    //nav control
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-
-        //
-        val logoutButton: ImageButton = findViewById(R.id.logoutButton)
-
-        logoutButton.setOnClickListener {
-            // Call the logout function
-            logout()
-        }
-        //nav control
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-        bottomNavigationView.selectedItemId = R.id.bottom_home
-        bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
-            when (item.itemId) {
-                R.id.bottom_home -> return@setOnItemSelectedListener true
-                R.id.bottom_berita -> {
-                    val intent = Intent(applicationContext, ArtikelPage::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-                    finish()
-                    return@setOnItemSelectedListener true
-                }
-
-                R.id.bottom_grafik -> {
-                    val intent = Intent(applicationContext, Grafik::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-                    finish()
-                    return@setOnItemSelectedListener true
-                }
-
-                R.id.bottom_sensor -> {
-                    val intent = Intent(applicationContext, Sensor::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-                    startActivity(intent)
-                    finish()
-                    return@setOnItemSelectedListener true
-                }
-            }
-            false
-        }
-
-//
-
 
         locationView = findViewById(R.id.lokasi)
         suhuView = findViewById(R.id.suhu)
@@ -92,6 +49,12 @@ class Dashboard : AppCompatActivity() {
         runTextView = findViewById(R.id.runtext)
 
 
+        binding = ActivityDashboardBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setupViews()
+        observeNewsData()
+        viewModel.getAllNotes()
 
         runTextView.isSelected = true
 
@@ -134,9 +97,8 @@ class Dashboard : AppCompatActivity() {
         timeView.text = "${current.last_updated}"
         udaraView.text = "${current.wind_kph} kph"
 
-//        val pm25Value = 300.0
-        val pm25Value = 10.0
-//        val pm25Value = airQuality.pm25
+        val pm25Value = 300.0
+//        val pm25Value = 160.0
 
         val aqi = calculateAQI(pm25Value)
 
@@ -224,18 +186,6 @@ class Dashboard : AppCompatActivity() {
             }
         }
     }
-    private fun logout() {
-        val auth = FirebaseAuth.getInstance()
-
-        // Sign out the user
-        auth.signOut()
-
-        // Navigate to ActivityLogin
-        val intent = Intent(this, LoginActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
-        finish()
-    }
 
 //    fun calculateAQI(pm25: Double): String {
 //        if (pm25 < 0 || pm25 > 500) {
@@ -261,6 +211,43 @@ class Dashboard : AppCompatActivity() {
             }
         }
         throw IllegalArgumentException("Value not within valid range.")
+    }
+
+
+    private lateinit var binding: ActivityDashboardBinding
+
+    private val viewModel: MainViewModel by viewModels()
+
+    @Inject
+    lateinit var newsAdapter: AdapterNews
+
+
+
+
+
+    private fun observeNewsData() {
+        viewModel.newsData.observe(this@Dashboard) { response ->
+            when (response.status) {
+                MyResponse.Status.LOADING -> {
+                    binding.loading.visibility = View.VISIBLE
+                }
+                MyResponse.Status.SUCCESS -> {
+                    binding.loading.visibility = View.GONE
+                    response?.data?.articles?.let { newsAdapter.submitData(it) }
+                }
+                MyResponse.Status.ERROR -> {
+                    binding.loading.visibility = View.GONE
+                    Toast.makeText(this@Dashboard, response.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun setupViews() {
+        binding.recyclerview.apply {
+            layoutManager = LinearLayoutManager(this@Dashboard, LinearLayoutManager.VERTICAL, false)
+            adapter = newsAdapter
+        }
     }
 
 
