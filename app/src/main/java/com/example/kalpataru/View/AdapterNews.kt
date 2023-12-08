@@ -2,6 +2,8 @@ package com.example.kalpataru.View
 
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -30,6 +32,10 @@ class AdapterNews @Inject constructor(@ActivityContext private val context : Con
                     .error(R.drawable.not_available)
                     .placeholder(R.drawable.not_available)
                     .into(newsImage)
+                newsTitle.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(data.url))
+                    context.startActivity(intent)
+                    }
             }
         }
     }

@@ -9,7 +9,7 @@ class MainRepository @Inject constructor(private val api : NewsApiService)
 {
     suspend fun lastNews() : Flow<MyResponse<NewsResponse>> = flow {
         emit(MyResponse.loading())
-        val response = api.getTopHeadLines(TOKEN,"Pollution")
+        val response = api.getTopHeadLines(TOKEN,"Jakarta%Air%Pollution")
         if (response.isSuccessful)
             emit(MyResponse.success(response.body()))
         else emit(MyResponse.error("please try again later!"))

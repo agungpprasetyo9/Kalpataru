@@ -62,7 +62,7 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="3dp"
             android:ellipsize="end"
-            android:textColor="@color/material_dynamic_primary70"
+            android:textColor="@color/one"
 
             android:orientation="vertical"
             android:singleLine="true"

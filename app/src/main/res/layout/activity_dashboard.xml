@@ -9,7 +9,7 @@
 
     <View
         android:id="@+id/top_view"
-        android:layout_width="415dp"
+        android:layout_width="match_parent"
         android:layout_height="389dp"
         android:background="@drawable/bg_dash"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +149,7 @@
                     android:id="@+id/infoAQI"
                     android:layout_width="191dp"
                     android:layout_height="wrap_content"
-                    android:text="Baik"
+                    android:text=""
                     android:textColor="@color/green"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -167,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/interextrabold"
                     android:gravity="center"
-                    android:text="36"
+                    android:text=""
                     android:textColor="@color/green"
                     android:textSize="40sp"
                     android:textStyle="bold" />
@@ -366,20 +366,32 @@
         android:id="@+id/headerBackground"
         android:layout_width="0dp"
         android:layout_height="65dp"
-        android:background="@color/bluehead"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:cardCornerRadius="20dp"/>
+
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/main_blue"
         android:text="Prediksi Kualitas Udara"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/main_blue"
+        android:text="Riwayat Kualitas Udara"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -400,39 +412,43 @@
         app:menu="@menu/bottom_menu"
         tools:layout_editor_absoluteX="0dp" />
 
-    <TextView
-        android:id="@+id/tvAppName"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Artikel"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="25dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="26sp"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclervieww"
         android:layout_width="382dp"
         android:layout_height="189dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="432dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+        app:layout_constraintTop_toBottomOf="@+id/top_view" />
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/loading"-->
+<!--        style="?android:attr/progressBarStyle"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:visibility="visible"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:layout_editor_absoluteX="177dp"-->
+<!--        tools:layout_editor_absoluteY="372dp" />-->
 
     <com.github.ybq.android.spinkit.SpinKitView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/loading"
         style="@style/SpinKitView.ThreeBounce"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:SpinKit_Color="#546E7A"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:SpinKit_Color="#546E7A"/>
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.527" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

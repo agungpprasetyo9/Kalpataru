@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Kalpataru" parent="Theme.Material3.DayNight.NoActionBar">
+<!--    <style name="Base.Theme.Kalpataru" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <style name="Base.Theme.Kalpataru" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
@@ -8,4 +9,12 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">4dp</item>
     </style>
+
+    <style name="Theme.Kalpataru" parent="Base.Theme.Kalpataru" >
+        <item name="android:windowFullscreen">true</item>
+
+    </style>
+
+
+
 </resources>

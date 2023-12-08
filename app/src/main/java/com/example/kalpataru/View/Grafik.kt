@@ -19,7 +19,10 @@ class Grafik : AppCompatActivity() {
 
     private var _binding: ActivityGrafikBinding? = null
     private val binding get() = _binding!!
-    private val apiKey = "2dbf726a758b40e2a4d101106202810"
+//    private val apiKey = "2dbf726a758b40e2a4d101106202810"
+
+    //agung api key
+    private val apiKey = "8884e1a7a804409096d20524232411"
     private val apiUrl =
         "https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=-7.8011945,110.364917&days=8&aqi=yes&alerts"
 
@@ -74,6 +77,7 @@ class Grafik : AppCompatActivity() {
                 // Handle the API response here
                 val location = response.getJSONObject("location")
                 val current = response.getJSONObject("current")
+                val forecast = response.getJSONObject("forecast")
                 val airQuality = current.getJSONObject("air_quality")
                 val region = location.getString("region")
                 val name = location.getString("name")
@@ -82,6 +86,8 @@ class Grafik : AppCompatActivity() {
                 val humidity = current.getInt("humidity")
                 val pressureIn = current.getDouble("pressure_in")
                 val windDegree = current.getInt("wind_degree")
+                val forecastday = forecast.getJSONArray("forecastday")
+
 
                 val getPm25 = airQuality.getDouble("pm2_5")
                 val getCo = airQuality.getDouble("co")
@@ -166,15 +172,7 @@ class Grafik : AppCompatActivity() {
         val index = calculateIndex(pm25, breakpoints, concentrations)
 
         return "$index"
-//
-//        return when {
-//            pm25 in 0.0..12.0 -> 0
-//            pm25 in 12.1..35.4 -> 1
-//            pm25 in 35.5..55.4 -> 2
-//            pm25 in 55.5..150.4 -> 3
-//            pm25 in 150.5..250.4 -> 4
-//            else -> 5
-//        }
+
     }
 
     fun calculateIndex(value: Double, breakpoints: List<Double>, concentrations: List<Int>): Int {
@@ -261,4 +259,5 @@ class Grafik : AppCompatActivity() {
         super.onDestroy()
         _binding = null
     }
+
 }
