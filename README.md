@@ -1,5 +1,8 @@
 # Pembagian Tugas
 
+## Nama Kelompok : Serangan Fajar
+## Nama Aplikasi : Kalpataru
+
 ## Ketua Kelompok
 1. Fikri Ahmad Fauzi (21523012)
 
@@ -22,3 +25,11 @@
 - Mengintegrasikan API AQI ke dalam aplikasi Kalpataru.
 - Menggabungkan semua pekerjaan tim.
 - Inisialisasi Firebase dan Github (config).
+
+### Fikri Achmad Fauzi
+- Mendesain di Figma.
+- Mengintegrasikan API berita (News API) ke dalam aplikasi.
+- Membuat halaman artikel.
+- Membantu pembuatan frontend
+- Mendesain poster.
+- Integrasi API news ke dalam Dashboard.
