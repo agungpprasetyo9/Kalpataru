@@ -41,11 +41,16 @@
 - Mendesain di Figma dan membantu perbaikan antarmuka
 - Membuat video
 
+### Jagad Budi Prasetyo:
+- Membantu pembuatan frontend
+- Membuat halaman grafik
+- Mendesain di Figma
+- Mendukung integrasi API ke dalam halaman grafik
+
 ### Fajar Juliyanto:
 - Membuat frontend untuk halaman login dan register
 - Membuat navbar
 - Membuat backend untuk autentikasi login
 - Mendesain di Figma
 - Mengintegrasikan aplikasi dengan Firebase (backend)
-
 
