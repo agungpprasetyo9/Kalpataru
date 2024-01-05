@@ -41,7 +41,7 @@
 - Mendesain di Figma dan membantu perbaikan antarmuka
 - Membuat video
 
-### Fajar Julyanto:
+### Fajar Juliyanto:
 - Membuat frontend untuk halaman login dan register
 - Membuat navbar
 - Membuat backend untuk autentikasi login
