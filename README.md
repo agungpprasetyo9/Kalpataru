@@ -33,3 +33,11 @@
 - Membantu pembuatan frontend
 - Mendesain poster.
 - Integrasi API news ke dalam Dashboard.
+
+### Satriya Adhi Pradhana:
+- Membuat frontend untuk halaman sensor
+- Membuat perangkat Arduino yang terintegrasi ke dalam aplikasi
+- Mendukung backend dalam membaca data sensor dari Firebase
+- Mendesain di Figma dan membantu perbaikan antarmuka
+- Membuat video
+
